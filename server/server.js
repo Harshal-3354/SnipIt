@@ -8,11 +8,15 @@ connectDB();
 
 const app = express();
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Routes placeholder
+// Routes
+app.use("/auth", require("./routes/authRoutes"));
+app.use("/links", require("./routes/linkRoutes"));
+app.use("/links", require("./routes/analyticsRoutes"));
+app.use("/r", require("./routes/redirectRoutes"));
+
 app.get("/", (req, res) => {
   res.send("SnipIt API is running...");
 });
