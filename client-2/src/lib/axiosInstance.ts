@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000", // ✅ change this later to production URL
+  baseURL: "https://snipit-8euj.onrender.com", // ✅ change this later to production URL
   headers: {
     "Content-Type": "application/json",
   },
