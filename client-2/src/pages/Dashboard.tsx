@@ -287,14 +287,14 @@ const Dashboard = () => {
                       <td className="p-6">
                         <div className="flex items-center gap-2">
                           <span className="font-mono text-sm">
-                            http://localhost:5000/r/{link.shortId}
+                            https://snipit-8euj.onrender.com/r/{link.shortId}
                           </span>
                           <Button
                             variant="ghost"
                             size="sm"
                             onClick={() =>
                               copyToClipboard(
-                                `http://localhost:5000/r/${link.shortId}`
+                                `https://snipit-8euj.onrender.com/r/${link.shortId}`
                               )
                             }
                           >
