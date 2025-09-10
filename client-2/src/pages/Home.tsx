@@ -149,6 +149,3 @@ const Home = () => {
 };
 
 export default Home;
-function setMode(arg0: () => void) {
-  throw new Error("Function not implemented.");
-}
