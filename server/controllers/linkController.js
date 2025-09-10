@@ -11,15 +11,27 @@ exports.createLink = async (req, res) => {
       return res.status(400).json({ message: "Original URL is required" });
     }
 
-    // Check if custom alias is taken
+    let shortId;
+
     if (customAlias) {
-      const aliasExists = await Link.findOne({ customAlias });
+      // Check if custom alias already taken
+      const aliasExists = await Link.findOne({ shortId: customAlias });
       if (aliasExists) {
         return res.status(400).json({ message: "Custom alias already taken" });
       }
+      shortId = customAlias; // ✅ Use custom alias as shortId
+    } else {
+      // Generate unique shortId
+      let isUnique = false;
+      while (!isUnique) {
+        const candidate = nanoid(7);
+        const exists = await Link.findOne({ shortId: candidate });
+        if (!exists) {
+          shortId = candidate;
+          isUnique = true;
+        }
+      }
     }
-
-    const shortId = nanoid(7);
 
     const hashedPassword = password ? await bcrypt.hash(password, 10) : null;
 
@@ -27,7 +39,6 @@ exports.createLink = async (req, res) => {
       owner: req.user.id,
       originalUrl,
       shortId,
-      customAlias: customAlias || null,
       expirationDate: expirationDate || null,
       password: hashedPassword,
     });

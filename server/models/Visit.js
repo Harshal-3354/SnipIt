@@ -7,13 +7,20 @@ const visitSchema = new mongoose.Schema({
     required: true,
   },
   ip: String,
-  device: String,
+  deviceType: String, // desktop / mobile / tablet
   browser: String,
+  browserVersion: String,
+  os: String,
+  referrer: String, // google.com, facebook.com etc
   location: {
     country: String,
     region: String,
     city: String,
+    isp: String,
+    lat: Number,
+    lon: Number,
   },
+  isUnique: { type: Boolean, default: false }, // unique visitor flag
   timestamp: {
     type: Date,
     default: Date.now,

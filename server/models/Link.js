@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Visit = require("./Visit");
 
 const linkSchema = new mongoose.Schema(
   {
@@ -40,6 +41,19 @@ const linkSchema = new mongoose.Schema(
     ],
   },
   { timestamps: true }
+);
+
+linkSchema.pre(
+  "deleteOne",
+  { document: true, query: false },
+  async function (next) {
+    try {
+      await Visit.deleteMany({ link: this._id });
+      next();
+    } catch (err) {
+      next(err);
+    }
+  }
 );
 
 module.exports = mongoose.model("Link", linkSchema);

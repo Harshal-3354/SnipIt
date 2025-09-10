@@ -14,7 +14,7 @@ app.use(express.json());
 // Routes
 app.use("/auth", require("./routes/authRoutes"));
 app.use("/links", require("./routes/linkRoutes"));
-app.use("/links", require("./routes/analyticsRoutes"));
+app.use("/analytics", require("./routes/analyticsRoutes"));
 app.use("/r", require("./routes/redirectRoutes"));
 
 app.get("/", (req, res) => {

@@ -3,6 +3,6 @@ const router = express.Router();
 const { getLinkAnalytics } = require("../controllers/analyticsController");
 const authMiddleware = require("../middleware/authMiddleware");
 
-router.get("/:id/analytics", authMiddleware, getLinkAnalytics);
+router.get("/:id", authMiddleware, getLinkAnalytics);
 
 module.exports = router;

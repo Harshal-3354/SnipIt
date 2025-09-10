@@ -19,6 +19,7 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.17.1",
     "nanoid": "^5.1.5",
+    "ua-parser-js": "^2.0.5",
     "useragent": "^2.3.0"
   },
   "devDependencies": {
